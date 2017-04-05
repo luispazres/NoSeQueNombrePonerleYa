@@ -47,7 +47,7 @@ function run(){
         $EmpresaCodigo="";
         $EmpresaCodigo=$_POST["txtEmpresaCodigo"];
         $location="";
-        ActualizarContrato( $_POST["txtCodContrato"], filtrado($_POST["txtServicio"]),filtrado($_POST["txtVigencia"]) ,$_POST["ContratoFechaInicio"],$_POST["ContratoFechaFinal"],filtrado($_POST["ContratoValor"]));
+        ActualizarContrato( $_POST["txtCodContrato"], filtrado($_POST["txtServicio"]),filtrado($_POST["txtVigencia"]) ,$_POST["ContratoFechaInicio"],$_POST["ContratoFechaFinal"],filtrado($_POST["ContratoValor"]),filtrado($_POST["txtMoneda"]));
         $location="Location:index.php?page=VerContratos&mode=Ver&EmpresaCodigo=".$EmpresaCodigo;
         header($location);
     }

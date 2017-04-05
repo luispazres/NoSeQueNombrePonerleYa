@@ -3,13 +3,13 @@
      require_once("libs/dao.php");
 
      /*Insertar Contratos*/
-     function insertarContratos($fechsinicio,$fechafinal,$vigencia,$valor ,$codigoEmpresa,$servcio){
+     function insertarContratos($fechsinicio,$fechafinal,$vigencia,$valor ,$codigoEmpresa,$servcio,$moneda){
          $strsql = "INSERT INTO tblcontratos
-                     (ContratoFechaInicio, ContratoFechaFinal ,VigenciaCodigo,ContratoValor ,EmpresaCodigo,ServicioCodigo)
+                     (ContratoFechaInicio, ContratoFechaFinal ,VigenciaCodigo,ContratoValor ,EmpresaCodigo,ServicioCodigo, MonedaCodigo)
                     VALUES
-                     ('%s', '%s', '%s','%f','%s','%s');";
+                     ('%s', '%s', '%s','%f','%s','%s',%d);";
          $strsql = sprintf($strsql,$fechsinicio,$fechafinal,
-                                     $vigencia,$valor,$codigoEmpresa,$servcio);
+                                     $vigencia,$valor,$codigoEmpresa,$servcio,$moneda);
 
          if(ejecutarNonQuery($strsql)){
              return getLastInserId();
@@ -62,9 +62,9 @@
     /*Muestra contratos por emmpresa*/
     function obtenerContratos($EmpresaCodigo){
     $contratos = array();
-    $sqlstr = "SELECT e.EmpresaCodigo, c.ContratoCodigo,c.ContratoFechaInicio,c.ContratoFechaFinal,c.ContratoValor, v.VigenciaMeses, s.ServicioNombre 'TipodeServicio'  ,d.DocumentoNombreArchivo 'NombredelContrato', d.DocumentoDireccion
-    from tblempresa as e, tblcontratos as c ,tbldocumento as d, tblservicios as s, tblvigencia as v where c.VigenciaCodigo=v.VigenciaCodigo and e.EmpresaCodigo= c.EmpresaCodigo and c.ContratoCodigo=d.ContratoCodigo
-    and c.ServicioCodigo=s.ServicioCodigo
+    $sqlstr = "SELECT e.EmpresaCodigo, c.ContratoCodigo,c.ContratoFechaInicio,c.ContratoFechaFinal,c.ContratoValor, v.VigenciaMeses, s.ServicioNombre 'TipodeServicio'  ,d.DocumentoNombreArchivo 'NombredelContrato', d.DocumentoDireccion, m.MonedaNombre
+    from tblempresa as e,tblmoneda as m, tblcontratos as c ,tbldocumento as d, tblservicios as s, tblvigencia as v where c.VigenciaCodigo=v.VigenciaCodigo and e.EmpresaCodigo= c.EmpresaCodigo and c.ContratoCodigo=d.ContratoCodigo
+    and c.ServicioCodigo=s.ServicioCodigo and c.MonedaCodigo=m.MonedaCodigo
     and e.EmpresaCodigo='%d';";
     $contratos = obtenerRegistros(sprintf($sqlstr,$EmpresaCodigo));
     return $contratos;
@@ -112,9 +112,9 @@
 
 
      /*Actualizar contratos variables tipo datetime */
-     function ActualizarContrato($contratoCodigo,$servcio,$contratoVigencia,$contratoFechaInicio,$contratoFechaFinal,$ContratoValor){
-      $updSql = "UPDATE tblcontratos set contratoFechaInicio = '%s', contratoFechaFinal = '%s', VigenciaCodigo='%s', ContratoValor='%f',ServicioCodigo='%s' where contratoCodigo ='%d';";
-      $result = ejecutarNonQuery(sprintf($updSql,$contratoFechaInicio,$contratoFechaFinal,$contratoVigencia,$ContratoValor,$servcio,$contratoCodigo));
+     function ActualizarContrato($contratoCodigo,$servcio,$contratoVigencia,$contratoFechaInicio,$contratoFechaFinal,$ContratoValor,$moneda){
+      $updSql = "UPDATE tblcontratos set contratoFechaInicio = '%s', contratoFechaFinal = '%s', VigenciaCodigo='%s', ContratoValor='%f',ServicioCodigo='%s', MonedaCodigo=%d where contratoCodigo ='%d';";
+      $result = ejecutarNonQuery(sprintf($updSql,$contratoFechaInicio,$contratoFechaFinal,$contratoVigencia,$ContratoValor,$servcio,$moneda,$contratoCodigo));
       return $result ;
      }
 

@@ -34,6 +34,22 @@
         </div>
      </div>
 
+     <div class="form-group">
+      <label class="control-label col-md-3 col-sm-3 col-xs-12">Moneda:</label>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <div class="radio">
+            <label>
+              <input type="radio" class="flat" checked name="txtMoneda" value="1"> Lempira
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" class="flat" name="txtMoneda" value="2"> Dolar
+            </label>
+          </div>
+    </div>
+ </div>
+
               <div class="form-group">
                <label class="control-label col-md-3 col-sm-3 col-xs-12"> Tipo de Servicio:</label>
                 <div class="col-md-9 col-sm-9 col-xs-12">

@@ -58,6 +58,24 @@
              </div>
 
              <div class="form-group">
+               <label class="col-lg-3 control-label">Moneda:</label>
+              <div class="col-md-9 col-sm-9 col-xs-12">
+               <div class="radio">
+                 <label>
+                   <input type="radio" class="flat" checked name="txtMoneda" value="1"> Lempira
+                 </label>
+               </div>
+               <div class="radio">
+                 <label>
+                   <input type="radio" class="flat" name="txtMoneda" value="2"> Dolar
+                 </label>
+               </div>
+              
+
+               </div>
+                </div>
+
+             <div class="form-group">
                <label class="col-lg-3 control-label">Fecha Inicial del Contrato:</label>
                   <div class="col-lg-5">
                     <input type="text"  class="form-control" name="ContratoFechaInicio" id="ContratoFechaInicio" value=""/>

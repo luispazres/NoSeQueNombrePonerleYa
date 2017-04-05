@@ -18,6 +18,7 @@ ini_set('display_errors', '1');
       $datos["fechaInicial"]="";
       $datos["fechaVencimiento"]="";
       $datos["documento"]= "";
+      $datos["moneda"]= "";
       $servicio = array();
       $servicio= obtenerServicios();//obtenemos el array de servicios
       $vigencia=  array();
@@ -33,6 +34,7 @@ ini_set('display_errors', '1');
 
       if(isset($_POST["btnGuardar"])){
         $datos["txtCodEmpresa"]=$_POST["txtCodEmpresa"];
+        $datos["moneda"]=$_POST["txtMoneda"];
         $datos["txtServicio"]=filtrado($_POST["txtServicio"]);
         $datos["txtVigencia"]=filtrado($_POST["txtVigencia"]);
         $datos["txtValor"]=filtrado($_POST["txtValor"]);
@@ -60,7 +62,7 @@ ini_set('display_errors', '1');
           $datos["txtValor"]=filtrado($_POST["txtValor"]);
         }
         //$datos["documento"]=$_POST["documento"];
-        $contratoId=InsertarContratos( $datos["fechaInicial"],  $datos["fechaVencimiento"],$datos["txtVigencia"],$datos["txtValor"],$datos["txtCodEmpresa"],$datos["txtServicio"]);
+        $contratoId=InsertarContratos( $datos["fechaInicial"],  $datos["fechaVencimiento"],$datos["txtVigencia"],$datos["txtValor"],$datos["txtCodEmpresa"],$datos["txtServicio"], $datos["moneda"]);
         $files = $_FILES['userfile']['name'];
        //creamos una nueva instancia de la clase multiupload
         $upload = new Multiupload();

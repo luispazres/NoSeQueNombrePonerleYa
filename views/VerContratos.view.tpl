@@ -33,6 +33,7 @@
                     <th>Fecha de Vencimiento</th>
                     <th>Contrato Vigencia</th>
                     <th>Valor Contrato</th>
+                    <th>Moneda</th>
                     <th>Tipo de Servicio</th>
                     <th>Nombre del Documento</th>
                     <th><i class="fa fa-wrench"></i></th>
@@ -47,6 +48,7 @@
                       <td>{{ContratoFechaFinal}}</td>
                       <td> {{VigenciaMeses}}</td>
                       <td>{{ContratoValor}}</td>
+                      <td>{{MonedaNombre}}</td>
                       <td>{{TipodeServicio}}</td>
                      <td>
                        <a href="index.php?page=vista&DocumentoDireccion={{DocumentoDireccion}}">{{NombredelContrato}}</a>
@@ -79,7 +81,7 @@
             </div>
           </div>
         </div>
-      
+
 <script src="vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="vendors/nprogress/nprogress.js"></script>
