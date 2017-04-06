@@ -74,6 +74,9 @@
     case "dashboard":
                   require_once("controllers/dashboard.control.php");
                   break;
+    case "backup":
+                  require_once("controllers/backup.control.php");
+                  break;
         default:
             require_once("controllers/error.control.php");
 
